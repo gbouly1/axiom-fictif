@@ -3,7 +3,7 @@ import hero from "../assets/img/hero.jpg";
 
 const Hero = () => {
   return (
-    <div className="h-screen bg-red-500 w-full relative">
+    <div className="h-screen  w-full relative">
       <h1 className="absolute text-white uppercase font-bold font-[Helvetica] top-[5%] left-[3%] text-3xl">
         <span className="uppercase font-normal">A</span>XIOM
       </h1>
