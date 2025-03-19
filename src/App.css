@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+.separator {
+  height: 5px;
+  background-color: #020202;
+  width: 100%;
+}

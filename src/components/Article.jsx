@@ -1,12 +1,11 @@
 import React from "react";
 
-const Article = ({ img, title, description }) => {
+const Article = ({ title, description }) => {
   return (
-    <div className="h-[50vh] flex col">
-      <img src={img} alt={img} className="bg-green-500 w-full" />
-      <div className="bg-blue-500 w-full ">
-        <h2>{title}</h2>
-        <p>{description}</p>
+    <div className="w-1/2 bg-[#020202] flex items-center ">
+      <div className="pl-15 text-white w-2/3">
+        <h2 className="text-3xl font-bold mb-4 font-[Helvetica]">{title}</h2>
+        <p className="font-[Helvetica] text-xl font-thin">{description}</p>
       </div>
     </div>
   );
