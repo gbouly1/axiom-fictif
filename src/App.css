@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Helvetica"; /* Nom que vous utiliserez dans votre CSS */
+  src: url("./assets/fonts/HelveticaNeueRoman.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Si vous avez plusieurs variantes (bold, italic, etc.) */
+@font-face {
+  font-family: "HelveticaBold";
+  src: url("./assets/fonts/HelveticaNeueBold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HelveticaLight";
+  src: url("./assets/fonts/HelveticaNeueLight.otf") format("opentype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HelveticaThin";
+  src: url("./assets/fonts/HelveticaNeueThin.otf") format("opentype");
+  font-weight: thin;
+  font-style: normal;
+}
+
+/* Utilisation dans votre CSS global ou dans des composants spécifiques */
+p {
+  font-family: "HelveticaThin", sans-serif; /* Toujours inclure une police de repli */
+}
+
+h1,
+h2,
+h3 {
+  font-family: "HelveticaLight", sans-serif;
+}
+
 .separator {
   height: 5px;
   background-color: #020202;

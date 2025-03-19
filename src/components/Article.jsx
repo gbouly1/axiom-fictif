@@ -2,19 +2,18 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const Article = ({ title, description }) => {
-  // Configuration des animations de texte
+  // Animation lettre par lettre pour le titre
   const titleAnimation = {
     hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
         delay: 0.3,
-        staggerChildren: 0.06,
+        staggerChildren: 0.08,
       },
     },
   };
 
-  // Animation pour chaque lettre
   const letterAnimation = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -23,23 +22,47 @@ const Article = ({ title, description }) => {
     },
   };
 
-  // Animation pour chaque mot
-  const wordVariants = {
-    hidden: { opacity: 0, x: -20 },
+  // Animation mot par mot pour la description
+  const descriptionAnimation = {
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
-      x: 0,
+      transition: {
+        delay: 0.5,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const wordAnimation = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
       transition: {
         duration: 0.4,
       },
     },
   };
 
+  // Fonction pour diviser le texte en mots
+  const splitWords = (text) => {
+    return text.split(" ").map((word, index) => (
+      <motion.span
+        key={index}
+        variants={wordAnimation}
+        className="inline-block mr-1"
+      >
+        {word}
+      </motion.span>
+    ));
+  };
+
   return (
     <div className="w-1/2 bg-[#020202] flex items-center relative">
       <div className="pl-15 text-white w-2/3">
+        {/* Titre avec animation lettre par lettre */}
         <motion.h2
-          className="text-4xl mb-4 font-[Helvetica] absolute top-[15%]"
+          className="text-5xl mb-4 absolute top-[15%]"
           variants={titleAnimation}
           initial="hidden"
           whileInView="visible"
@@ -52,13 +75,15 @@ const Article = ({ title, description }) => {
           ))}
         </motion.h2>
 
+        {/* Description avec animation mot par mot */}
         <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-[Helvetica] text-2xl font-thin"
+          variants={descriptionAnimation}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
         >
-          {description}
+          {splitWords(description)}
         </motion.p>
       </div>
     </div>
