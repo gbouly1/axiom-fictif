@@ -1,7 +1,19 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
 
 const Article = ({ title, description }) => {
+  // Référence pour l'élément parent
+  const ref = useRef(null);
+
+  // Utilisation de useScroll pour détecter la position de défilement
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"], // Commence quand le haut de l'élément atteint le bas de la fenêtre, se termine quand le bas de l'élément atteint le haut de la fenêtre
+  });
+
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, 200]); // Le titre monte plus rapidement
+  const descY = useTransform(scrollYProgress, [0, 1], [0, -50]); // La description monte plus lentement
+
   // Animation lettre par lettre pour le titre
   const titleAnimation = {
     hidden: { opacity: 1 },
@@ -58,11 +70,12 @@ const Article = ({ title, description }) => {
   };
 
   return (
-    <div className="w-1/2 bg-[#020202] flex items-center relative">
+    <div className="w-1/2 bg-[#020202] flex items-center relative" ref={ref}>
       <div className="pl-15 text-white w-2/3">
-        {/* Titre avec animation lettre par lettre */}
+        {/* Titre avec animation lettre par lettre + parallaxe */}
         <motion.h2
-          className="text-5xl mb-4 absolute top-[15%]"
+          className="text-4xl mb-4 font-[Helvetica] absolute top-[15%]"
+          style={{ y: titleY }} // Effet parallaxe
           variants={titleAnimation}
           initial="hidden"
           whileInView="visible"
@@ -75,13 +88,18 @@ const Article = ({ title, description }) => {
           ))}
         </motion.h2>
 
-        {/* Description avec animation mot par mot */}
+        {/* Description avec animation mot par mot + parallaxe */}
         <motion.p
-          className="font-[Helvetica] text-2xl font-thin"
+          className="font-[Helvetica] text-xl font-thin"
+          style={{ y: descY }} // Effet parallaxe
           variants={descriptionAnimation}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+          }}
         >
           {splitWords(description)}
         </motion.p>
