@@ -100,7 +100,7 @@ function App() {
         <div className="flex justify-center items-center h-full relative  bg-amber-50 pt-52 pb-52">
           <div className="absolute left-[5%] w-1/6">
             <About
-              description="AXIOM Architecture a été fondé en 2018 par Sara Nakamura et Thomas Leroy, avec une vision partagée : créer des espaces qui transcendent leur fonction première. Notre studio rassemble aujourd'hui douze architectes et designers passionnés par la recherche de solutions innovantes et durables.
+              description="Basés à Lyon avec des projets à travers l'Europe et l'Asie, nous cultivons une approche où chaque détail est pensé comme partie intégrante d'un ensemble cohérent. Notre travail a été distingué par le Prix Européen d'Architecture Émergente en 2022
 "
             />
           </div>
