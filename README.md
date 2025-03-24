@@ -1,5 +1,7 @@
 # hrnet-modal
 
+> A simple React library for displaying modals with customizable styles. This Modal component can be used in any React application to display modal dialogs with overlay and a close button.
+
 ## Install
 
 ```bash
@@ -25,3 +27,31 @@ const App = () => {
 
 export default App;
 ```
+
+##Custom
+
+```bash
+<Modal
+isOpen={isOpen}
+onClose={closeModal}
+title="Custom Modal"
+style={{
+    container: {
+      backgroundColor: '#f8f9fa',
+      borderRadius: '16px'
+    }
+  }}
+
+>
+
+  <p>Content with a customized modal</p>
+</Modal>
+```
+
+| Prop       | Type     | Required | Description                                 |
+| ---------- | -------- | -------- | ------------------------------------------- |
+| `isOpen`   | Boolean  | Yes      | Controls the visibility of the modal        |
+| `onClose`  | Function | Yes      | Function called when the modal should close |
+| `title`    | String   | Yes      | Title displayed in the modal header         |
+| `children` | Node     | No       | Content to display in the modal body        |
+| `style`    | Object   | No       | Custom styles for the modal                 |
