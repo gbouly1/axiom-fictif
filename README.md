@@ -8,9 +8,9 @@
 npm install hrnet-net-gbouly
 ```
 
-```bash
-import React, { useState } from 'react';
-import Modal from 'hrnet-net-gbouly';
+```jsx
+import React, { useState } from "react";
+import Modal from "hrnet-net-gbouly";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,11 @@ const App = () => {
   return (
     <div>
       <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Example Modal">
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Example Modal"
+      >
         <h1>Hello, this is a modal!</h1>
       </Modal>
     </div>
@@ -28,22 +32,20 @@ const App = () => {
 export default App;
 ```
 
-##Custom
+## Custom
 
-```bash
+```jsx
 <Modal
-isOpen={isOpen}
-onClose={closeModal}
-title="Custom Modal"
-style={{
+  isOpen={isOpen}
+  onClose={closeModal}
+  title="Custom Modal"
+  style={{
     container: {
-      backgroundColor: '#f8f9fa',
-      borderRadius: '16px'
-    }
+      backgroundColor: "#f8f9fa",
+      borderRadius: "16px",
+    },
   }}
-
 >
-
   <p>Content with a customized modal</p>
 </Modal>
 ```
